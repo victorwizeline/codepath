@@ -10,38 +10,29 @@ import android.view.MenuItem;
 
 import com.codepath.simpletodo.R;
 import com.codepath.simpletodo.adapters.TodoAdapter;
+import com.codepath.simpletodo.database.DatabaseManager;
+import com.codepath.simpletodo.interfaces.DatabaseListener;
 import com.codepath.simpletodo.models.Item;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class TodoActivity extends AppCompatActivity {
-
-    private RecyclerView rvItems;
+public class TodoActivity extends AppCompatActivity implements DatabaseListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
-        setupViews();
-        setRecyclerView();
+        setDatabaseManager();
     }
 
-    private void setupViews() {
-        rvItems = (RecyclerView) findViewById(R.id.rvItems);
+    private void setDatabaseManager() {
+        DatabaseManager databaseManager = new DatabaseManager(this);
+        databaseManager.getItemList(this);
     }
 
-    private void setRecyclerView() {
-        List<Item> items = new ArrayList<>();
-        items.add(new Item("Title 1", "Note 1", Item.Priority.High));
-        items.add(new Item("Title 2", "Note 2", Item.Priority.High));
-        items.add(new Item("Title 1", "Note 1", Item.Priority.High));
-        items.add(new Item("Title 2", "Note 2", Item.Priority.Medium));
-        items.add(new Item("Title 1", "Note 1", Item.Priority.Medium));
-        items.add(new Item("Title 2", "Note 2", Item.Priority.Medium));
-        items.add(new Item("Title 1", "Note 1", Item.Priority.Low));
-        items.add(new Item("Title 2", "Note 2", Item.Priority.Low));
-        items.add(new Item("Title 1", "Note 1", Item.Priority.Low));
+    @Override
+    public void onListReady(List<Item> items) {
+        RecyclerView rvItems = (RecyclerView) findViewById(R.id.rvItems);
         rvItems.setAdapter(new TodoAdapter(items));
         rvItems.setLayoutManager(new LinearLayoutManager(this));
     }

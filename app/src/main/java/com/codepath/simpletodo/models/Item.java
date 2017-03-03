@@ -6,17 +6,13 @@ package com.codepath.simpletodo.models;
 
 public class Item {
 
+    public int id;
     public String title;
     public String note;
-    public Priority priority;
+    public int priority;
 
-    public enum Priority {
-        High,
-        Medium,
-        Low
-    }
-
-    public Item(String title, String note, Priority priority) {
+    public Item(int id, String title, String note, int priority) {
+        this.id = id;
         this.title = title;
         this.note = note;
         this.priority = priority;

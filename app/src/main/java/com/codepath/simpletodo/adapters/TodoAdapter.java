@@ -55,14 +55,13 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolderItem
             tvNote.setText(item.note);
             int color = 0;
             switch (item.priority) {
-                case High:
+                case 0:
                     color = R.color.colorAccent;
                     break;
-                case Medium:
+                case 1:
                     color = R.color.colorPrimary;
                     break;
-
-                case Low:
+                case 2:
                     color = R.color.colorPrimaryDark;
                     break;
             }
