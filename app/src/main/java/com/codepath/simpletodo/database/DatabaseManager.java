@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.codepath.simpletodo.interfaces.DatabaseListener;
-import com.codepath.simpletodo.models.Item;
+import com.codepath.simpletodo.models.Todo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,62 +22,37 @@ public class DatabaseManager {
     public DatabaseManager(Context context) {
         DatabaseTodo databaseTodo = new DatabaseTodo(context);
         database = databaseTodo.getWritableDatabase();
-
     }
 
-    public void insertItem(Item item) {
+    public void insertTodo(Todo todo) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("title", item.title);
-        contentValues.put("note", item.note);
-        int priority = 0;
-        switch (item.priority) {
-            case 0:
-                priority = 0;
-                break;
-            case 1:
-                priority = 1;
-                break;
-            case 2:
-                priority = 2;
-                break;
-        }
-        contentValues.put("priority", priority);
-        database.insert("items", null, contentValues);
+        contentValues.put("title", todo.title);
+        contentValues.put("note", todo.note);
+        contentValues.put("priority", todo.priority);
+        database.insert("todos", null, contentValues);
     }
 
-    public void deleteItem(int id) {
-        database.delete("items", "id=" + id + "", null);
+    public void deleteTodo(int id) {
+        database.delete("todos", "id=" + id + "", null);
     }
 
-    public void updateItem(Item item) {
+    public void updateTodo(Todo todo) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("title", item.title);
-        contentValues.put("note", item.note);
-        int priority = 0;
-        switch (item.priority) {
-            case 0:
-                priority = 0;
-                break;
-            case 1:
-                priority = 1;
-                break;
-            case 2:
-                priority = 2;
-                break;
-        }
-        contentValues.put("priority", priority);
-        database.update("items", contentValues, "id=" + item.id + "", null);
+        contentValues.put("title", todo.title);
+        contentValues.put("note", todo.note);
+        contentValues.put("priority", todo.priority);
+        database.update("todos", contentValues, "id=" + todo.id + "", null);
     }
 
     public void getItemList(DatabaseListener databaseListener) {
-        List<Item> items = new ArrayList<>();
-        Cursor cursor = database.rawQuery(" SELECT * FROM items ORDER BY priority", null);
+        List<Todo> todos = new ArrayList<>();
+        Cursor cursor = database.rawQuery(" SELECT * FROM todos ORDER BY priority", null);
         if (cursor.moveToFirst()) {
             do {
-                items.add(new Item(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));
+                todos.add(new Todo(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));
             } while (cursor.moveToNext());
         }
         cursor.close();
-        databaseListener.onListReady(items);
+        databaseListener.onListReady(todos);
     }
 }

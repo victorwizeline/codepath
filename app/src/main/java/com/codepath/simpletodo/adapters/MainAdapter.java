@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.codepath.simpletodo.R;
-import com.codepath.simpletodo.activities.ItemActivity;
-import com.codepath.simpletodo.models.Item;
+import com.codepath.simpletodo.activities.TodoActivity;
+import com.codepath.simpletodo.models.Todo;
 import com.codepath.simpletodo.utils.Constants;
 
 import java.util.List;
@@ -18,56 +18,56 @@ import java.util.List;
  * Created by Mariano on 03/03/17.
  */
 
-public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolderItem> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolderTodo> {
 
-    private List<Item> items;
+    private List<Todo> todos;
 
-    public TodoAdapter(List<Item> items) {
-        this.items = items;
+    public MainAdapter(List<Todo> todos) {
+        this.todos = todos;
     }
 
     @Override
-    public ViewHolderItem onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolderTodo onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
-        return new ViewHolderItem(view);
+        return new ViewHolderTodo(view);
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return todos.size();
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolderItem holder, int position) {
-        holder.bind(items.get(position));
+    public void onBindViewHolder(final ViewHolderTodo holder, int position) {
+        holder.bind(todos.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), ItemActivity.class);
-                intent.putExtra(Constants.ITEM, items.get(holder.getAdapterPosition()));
+                Intent intent = new Intent(holder.itemView.getContext(), TodoActivity.class);
+                intent.putExtra(Constants.TODO, todos.get(holder.getAdapterPosition()));
                 holder.itemView.getContext().startActivity(intent);
             }
         });
     }
 
-    class ViewHolderItem extends RecyclerView.ViewHolder {
+    class ViewHolderTodo extends RecyclerView.ViewHolder {
 
         private TextView tvTitle;
         private TextView tvNote;
         private View viewColor;
 
-        ViewHolderItem(View itemView) {
+        ViewHolderTodo(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             tvNote = (TextView) itemView.findViewById(R.id.tvNote);
             viewColor = itemView.findViewById(R.id.viewColor);
         }
 
-        void bind(Item item) {
-            tvTitle.setText(item.title);
-            tvNote.setText(item.note);
+        void bind(Todo todo) {
+            tvTitle.setText(todo.title);
+            tvNote.setText(todo.note);
             int color = 0;
-            switch (item.priority) {
+            switch (todo.priority) {
                 case 0:
                     color = R.color.orange;
                     break;

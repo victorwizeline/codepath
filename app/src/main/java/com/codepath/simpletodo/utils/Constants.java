@@ -6,8 +6,8 @@ package com.codepath.simpletodo.utils;
 
 public class Constants {
 
-    public final static String HIGH = "high";
-    public final static String MEDIUM = "medium";
-    public final static String LOW = "low";
-    public final static String ITEM = "item";
+    public final static String HIGH = "HIGH";
+    public final static String MEDIUM = "MEDIUM";
+    public final static String LOW = "LOW";
+    public final static String TODO = "todo";
 }

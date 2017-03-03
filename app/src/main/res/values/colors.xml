@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#455A64</color>
     <color name="colorAccent">#795548</color>
     <color name="orange">#FF5722</color>
+    <color name="orangeDark">#E64A19</color>
     <color name="amber">#FFC107</color>
-    <color name="teal">#009688</color>
+    <color name="amberDark">#FFA000</color>
+    <color name="teal">#4CAF50</color>
+    <color name="tealDark">#33691E</color>
 </resources>

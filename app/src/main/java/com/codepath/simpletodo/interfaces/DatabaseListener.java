@@ -1,6 +1,6 @@
 package com.codepath.simpletodo.interfaces;
 
-import com.codepath.simpletodo.models.Item;
+import com.codepath.simpletodo.models.Todo;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface DatabaseListener {
-    void onListReady(List<Item> items);
+    void onListReady(List<Todo> todos);
 }

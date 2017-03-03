@@ -4,4 +4,9 @@
     <string name="todo_detail">Todo Detail</string>
     <string name="save_todo">Save Todo</string>
     <string name="delete_todo">Delete Todo</string>
+    <string name="enter_title">Please enter a title</string>
+    <string name="enter_description">Please enter a description</string>
+    <string name="todo_saved">Todo saved</string>
+    <string name="enter_your_title">Enter a title</string>
+    <string name="enter_your_description">Enter a description</string>
 </resources>

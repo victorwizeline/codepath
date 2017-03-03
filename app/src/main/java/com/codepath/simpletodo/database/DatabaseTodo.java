@@ -15,12 +15,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, note TEXT, priority INTEGER)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, note TEXT, priority INTEGER)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS items");
+        db.execSQL("DROP TABLE IF EXISTS todos");
         onCreate(db);
     }
 }
