@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SimpleTodo</string>
-    <string name="add_item">Item</string>
-    <string name="item">Item</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="todo_detail">Todo Detail</string>
+    <string name="save_todo">Save Todo</string>
+    <string name="delete_todo">Delete Todo</string>
 </resources>

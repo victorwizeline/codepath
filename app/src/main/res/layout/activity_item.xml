@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_edit_item"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="com.codepath.simpletodo.activities.ItemActivity">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences|textMultiLine"
         android:ems="10"
         android:id="@+id/etTitle"
-        android:hint="Title" />
+        android:hint="Title"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_title"
+        android:drawablePadding="16dp"
+        android:padding="16dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences|textMultiLine"
         android:ems="10"
         android:id="@+id/etNote"
-        android:hint="Note" />
+        android:hint="Description"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_description"
+        android:drawablePadding="18dp"
+        android:padding="16dp" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner" />
-
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnSave" />
+        android:id="@+id/spinner"
+        android:layout_gravity="right" />
 
 </LinearLayout>

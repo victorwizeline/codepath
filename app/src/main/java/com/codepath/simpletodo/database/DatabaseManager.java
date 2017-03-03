@@ -71,7 +71,7 @@ public class DatabaseManager {
 
     public void getItemList(DatabaseListener databaseListener) {
         List<Item> items = new ArrayList<>();
-        Cursor cursor = database.rawQuery(" SELECT * FROM items", null);
+        Cursor cursor = database.rawQuery(" SELECT * FROM items ORDER BY priority", null);
         if (cursor.moveToFirst()) {
             do {
                 items.add(new Item(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));

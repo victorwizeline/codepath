@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.codepath.simpletodo.R;
 import com.codepath.simpletodo.adapters.TodoAdapter;
@@ -32,6 +34,12 @@ public class TodoActivity extends AppCompatActivity implements DatabaseListener 
 
     @Override
     public void onListReady(List<Item> items) {
+        TextView tvNoItems = (TextView) findViewById(R.id.tvNoItems);
+        if (items.size() == 0) {
+            tvNoItems.setVisibility(View.VISIBLE);
+        } else {
+            tvNoItems.setVisibility(View.GONE);
+        }
         RecyclerView rvItems = (RecyclerView) findViewById(R.id.rvItems);
         rvItems.setAdapter(new TodoAdapter(items));
         rvItems.setLayoutManager(new LinearLayoutManager(this));
