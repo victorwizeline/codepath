@@ -6,10 +6,13 @@ package com.codepath.simpletodo.models;
 
 public class Item {
 
-    public int id;
+    public Integer id;
     public String title;
     public String note;
-    public int priority;
+    public Integer priority;
+
+    public Item() {
+    }
 
     public Item(int id, String title, String note, int priority) {
         this.id = id;

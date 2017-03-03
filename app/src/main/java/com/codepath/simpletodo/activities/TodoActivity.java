@@ -47,10 +47,16 @@ public class TodoActivity extends AppCompatActivity implements DatabaseListener 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_item:
-                startActivity(new Intent(this, EditItemActivity.class));
+                startActivity(new Intent(this, ItemActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setDatabaseManager();
     }
 }
